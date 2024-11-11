@@ -14,12 +14,13 @@ function App(){
     }        
   ])
 const addTodo = value => {
-  const newTodos = [...todos, {text:value, isCompleted: false}];
+  const newTodos = [...todos, {text:value, 
+    isCompleted: false}];
   setTodos(newTodos);
 }
 
-const removeTodo = e => {
-  const index = Number(e.target.id);
+const removeTodo = index => {
+  // const index = Number(e.target.id); //this is if todo is not refactored
   let temp = [...todos];
   temp.splice(index,1);
   setTodos(temp);
@@ -27,7 +28,13 @@ const removeTodo = e => {
 
 return(
     <>
-      {todos.map((todo, i) => <div className = "todo" id={i}  onClick={removeTodo} key={i}>{todo.text}</div>)}
+      {todos.map((todo, i) => 
+      // <div className = "todo"   /this is if todo is not refactored
+      //       id={i}  
+      //       onClick={removeTodo} 
+      //       key={i}>
+      //   {todo.text}</div>)}
+      <Todo index={i} key={i} todo={todo} remove={removeTodo}/>)}
       <TodoForm addTodo={addTodo}/>
     </>
   );
